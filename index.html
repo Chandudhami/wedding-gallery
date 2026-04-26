@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chintu Photography</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    body{
+      margin:0;
+      background:#0f172a;
+      color:#fff;
+      font-family:sans-serif;
+      text-align:center;
+    }
+
+    h1{padding:10px;}
+
+    input, button{
+      padding:10px;
+      margin:10px;
+      border-radius:8px;
+      border:none;
+    }
+
+    button{
+      background:#22c55e;
+      color:white;
+    }
+
+    #gallery{
+      display:none;
+      padding:10px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+      gap:10px;
+    }
+
+    .card{
+      background:#1e293b;
+      padding:10px;
+      border-radius:10px;
+    }
+
+    .card img{
+      width:100%;
+      border-radius:10px;
+    }
+
+    .download{
+      display:block;
+      margin-top:5px;
+      padding:6px;
+      background:#22c55e;
+      color:white;
+      text-decoration:none;
+      border-radius:6px;
+    }
+
+    .contact{
+      margin-top:20px;
+    }
+
+    .contact a{
+      display:inline-block;
+      margin:5px;
+      padding:10px 15px;
+      background:#6366f1;
+      color:white;
+      text-decoration:none;
+      border-radius:8px;
+    }
+
+    .qr img{
+      width:120px;
+      margin:10px;
+      border-radius:10px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<h1>📸 Chintu Photography</h1>
+
+<h3>🔐 Enter Password</h3>
+
+<input type="password" id="pass" placeholder="Enter Password">
+<button onclick="openGallery()">Open</button>
+
+<div id="gallery">
+
+  <div class="grid" id="grid"></div>
+
+  <div class="contact">
+    <a href="tel:8533999300">📞 Call</a>
+    <a href="https://wa.me/918533999300" target="_blank">💬 WhatsApp</a>
+    <a href="https://instagram.com/wedding_reel05" target="_blank">📸 Instagram</a>
+  </div>
+
+  <div class="qr">
+    <p>Scan & Connect</p>
+    <img src="insta.jpg">
+    <img src="whatsapp.jpg">
+  </div>
+
+  <p>📞 8533999300</p>
+
+</div>
+
+<script>
+
+const images = [
+  "img1.jpg",
+  "img2.jpg",
+  "img3.jpg",
+  "img4.jpg"
+];
+
+function openGallery(){
+  if(document.getElementById("pass").value === "1234"){
+    document.getElementById("gallery").style.display="block";
+    loadImages();
+  } else {
+    alert("Wrong Password");
+  }
+}
+
+function loadImages(){
+  let grid = document.getElementById("grid");
+
+  images.forEach(img=>{
+    let div = document.createElement("div");
+    div.className = "card";
+
+    div.innerHTML = `
+      <img src="${img}">
+      <a href="${img}" download class="download">⬇ Download</a>
+    `;
+
+    grid.appendChild(div);
+  });
+}
+
+</script>
+
+</body>
+</html>
